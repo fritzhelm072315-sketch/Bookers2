@@ -1,0 +1,40 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>Editing Book</h1>
+      <%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
+
+        <% if @book.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:</h2>
+            <ul>
+              <% @book.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="pt-3 pb-1">
+          <label>Title</label>
+        </div>
+        <div class="pt-1 pb-1">
+          <%= f.text_field :title, autofocus: true %>
+        </div>
+        <div class="pt-3 pb-1">
+          <label>Opinion</label>
+        </div>
+        <div class="pt-1 pb-1">
+          <%= f.text_area :body, autofocus: true %>
+        </div>
+        <div class="pt-3 pb-1">
+          <%= f.submit "Update Book", class: "btn btn-sm btn-success" %>
+        </div>
+      <% end %>
+      <div>
+        <%= link_to "Show", book_path(@book.id), class: "link" %> | <%= link_to "Back", books_path, class: "link" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<%= render 'books/book', books: @books %>
+
+<div class="col-md-8 offset-md-1 mt-3"">
+  <h3>Users</h3>
+  <table class="table table-hover table-inverse">
+    <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th></th>
+    </tr>
+    </thead>
+    <% @users.each do |user| %>
+      <tbody>
+        <tr>
+          <th>
+            <%= image_tag user.get_profile_image(100, 100) %>
+          </th>
+          <th>
+            <%= user.name %>
+          </th>
+          <th>
+            <%= link_to user_path(user.id) do %>Show
+            <% end %>
+          </th>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>

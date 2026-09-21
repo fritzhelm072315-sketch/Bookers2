@@ -1,0 +1,45 @@
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+          <h2>User info</h2>
+          <%= form_with model: @user, url: user_path(@user.id), method: :patch do |f| %>
+            
+            <% if @user.errors.any? %>
+              <div id="error_explanation">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this obj from being saved:</h2>
+                <ul>
+                  <% @user.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            
+            <div class="pt-3 pb-1">
+              <label>Name</label>
+            </div>
+            <div class="pt-1 pb-1">
+              <%= f.text_field :name, autofocus: true %>
+            </div>
+            <div class="pt-3 pb-1">
+              <label>Profile Image</label>
+            </div>
+            <div class="pt-1 pb-1">
+              <%= f.file_field :profile_image, accept: "image/*" %>  
+            </div>
+            <div class="pt-3 pb-1">
+              <label>Introduction</label>
+            </div>
+            <div class="pt-1 pb-1">
+              <%= f.text_area :introduction, autofocus: true %>
+            </div>
+            <div class="pt-3 pb-1">
+              <%= f.submit "Update User", class: "btn btn-sm btn-secondary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

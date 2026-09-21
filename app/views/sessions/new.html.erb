@@ -1,0 +1,25 @@
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+        <h2>Log in</h2>
+        <%= form_with url: session_path do |form| %>
+          <div class="pt-2 pb-2">
+            <a>Name</a><br>
+            <%= form.text_field :name, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your name", value: params[:name] %><br>
+          </div>
+          <div class="pt-2 pb-2">
+            <a>Password</a><br>
+            <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password" %><br>
+          </div>
+          <div class="pt-2 pb-2">
+            <%= form.submit "Log in", class: "btn btn-sm btn-primary" %>
+          </div>
+        <% end %>
+        <div class="pt-2 pb-2">
+          <%= link_to "Sign up", new_user_path, class: "link" %><br>
+          <%= link_to "Forgot password?", new_password_path, class: "link" %>
+        </div>
+      </div>
+    </div>
+  </div>
